@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<style>
+    body {
+    background-color: #ccccb3;
+}
+</style>
+<body >
+
+<center>
+    <b>
+<h1> Welcome to my TODO project</h1>
+        <br>
+        {% if user.is_authenticated %}
+            <h2>Logged in as {{ request.user }}</h2>
+            <p><a href="{% url 'logout' %}">Log out</a></p>
+        {% else %}
+            <h2>Logged out</h2>
+
+        {% endif %}
+        <br><br>
+{% for i in profiles %}
+        <h4 >created by : {{ user_name}}</h4>
+    my task is :      {{ i.name }} <br>
+    on date :         {{ i.date }} <br>
+    {% if i.deleted == True %}
+        Is it expired : Yes
+    {% else %}
+        Is it expired : No
+    {% endif %}
+
+    <br><br><br>
+{% endfor %}
+        </b>
+</center>
+
+
+</body>
+</html>
